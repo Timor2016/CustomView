@@ -8,14 +8,6 @@
     android:gravity="center"
     android:weightSum="1">
 
-    <!-- <com.wc.customview.view.CheckBox
-         android:id="@+id/check"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:visibility="gone"
-         app:color_background="#FF3F51B5"
-         app:color_border="#FF3F51B5"
-         app:size="100dp"/>-->
 
     <com.wc.customview.view.CheckMaterial
         android:id="@+id/check"

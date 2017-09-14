@@ -103,12 +103,10 @@ public class CheckMaterial extends View implements Checkable {
             size = width;
         }
         setMeasuredDimension(size, size);
-
         rightLine = getMeasuredWidth() / 3;
         LeftLine = getMeasuredWidth() / 6;
         rightLine = (float) (rightLine * Math.sqrt(2) / 2);
         LeftLine = (float) (LeftLine * Math.sqrt(2) / 2);
-
     }
 
 
@@ -152,7 +150,7 @@ public class CheckMaterial extends View implements Checkable {
         return progress;
     }
 
-    public void setProgress(float progress) {
+    private void setProgress(float progress) {
         this.progress = progress;
         invalidate();
     }

@@ -23,14 +23,5 @@ public class MainActivity extends AppCompatActivity {
                 checkMaterial.toggle();
             }
         });
-        
-        /*checkBoxSample1 = (CheckBox)findViewById(R.id.check);
- 
-        checkBoxSample1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkBoxSample1.toggle();
-            }
-        });*/
     }
 }
