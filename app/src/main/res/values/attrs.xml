@@ -14,4 +14,7 @@
         <!--对勾宽度-->
         <attr name="is_check" format="boolean"/>
     </declare-styleable>
+    
+    
+    
 </resources>
