@@ -126,8 +126,6 @@ public class ButtonView extends View implements View.OnClickListener {
         animator = ObjectAnimator.ofFloat(this, "progress", isCycle ? 1.0f : 0.0f);
         animator.setDuration(500);
         animator.start();
-
-
     }
 
     private void setARGB(float fraction, Object startValue, Object endValue) {
