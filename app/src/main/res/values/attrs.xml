@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CheckBox_Sample">
-        <attr name="size" format="dimension"/>
-        <attr name="color_border" format="color"/>
-        <attr name="color_background" format="color"/>
-    </declare-styleable>
-
-
     <declare-styleable name="CheckBox_Material">
-        <!--边框宽度-->
+        <!--边框颜色-->
         <attr name="border_color" format="color"/>
         <!--选中时的颜色-->
         <attr name="check_color" format="color"/>
@@ -18,5 +11,7 @@
         <attr name="mark_color" format="color"/>
         <!--对勾宽度-->
         <attr name="mark_width" format="dimension"/>
+        <!--对勾宽度-->
+        <attr name="is_check" format="boolean"/>
     </declare-styleable>
 </resources>

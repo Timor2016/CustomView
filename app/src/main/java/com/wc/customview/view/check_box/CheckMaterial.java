@@ -1,4 +1,4 @@
-package com.wc.customview.view;
+package com.wc.customview.view.check_box;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -6,12 +6,11 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
+import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.BounceInterpolator;
 import android.widget.Checkable;
 
 import com.wc.customview.R;
@@ -19,7 +18,7 @@ import com.wc.customview.R;
 /**
  * 作者：wangchao
  * 时间：2017/9/13 0013 13:47
- * 描述：
+ * 描述：checkBox
  */
 public class CheckMaterial extends View implements Checkable {
 
@@ -27,26 +26,33 @@ public class CheckMaterial extends View implements Checkable {
      * 弹跳幅度
      */
     private final float BOUNCE_VALUE = 0.2f;
-
+    /*边框颜色*/
     private int boardColor;
+    /*边框宽度*/
     private int boardWide = 6;
+    /*选中时颜色*/
     private int checkColor;
+    /*对勾颜色*/
     private int markColor;
+    /*对勾宽度*/
     private int markWidth = 6;
-
+    /*边框画笔*/
     private Paint boardPaint;
+    /*选中时画笔*/
     private Paint checkBgPaint;
-
+    /*对勾画笔*/
     private Paint checkMarkPaint;
-
+    /*画圆半径*/
     private float progress;
     private ObjectAnimator progressAnimate;
     private boolean isChecked = false;
 
-
+    /*圆半径*/
     private float rad;
+    /*对勾*/
     private float rightLine = 0;
     private float LeftLine = 0;
+
 
     public CheckMaterial(Context context) {
         this(context, null);
@@ -62,7 +68,11 @@ public class CheckMaterial extends View implements Checkable {
         init(attrs);
     }
 
-
+    /**
+     * 初始化相关参数
+     *
+     * @param attrs
+     */
     private void init(AttributeSet attrs) {
 
         boardColor = getContext().getResources().getColor(R.color.colorPrimary);
@@ -75,7 +85,7 @@ public class CheckMaterial extends View implements Checkable {
         boardWide = array.getDimensionPixelSize(R.styleable.CheckBox_Material_border_wide, boardWide);
         markColor = array.getColor(R.styleable.CheckBox_Material_mark_color, markColor);
         markWidth = array.getDimensionPixelSize(R.styleable.CheckBox_Material_mark_width, markWidth);
-
+        isChecked = array.getBoolean(R.styleable.CheckBox_Material_is_check, isChecked);
 
         boardPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         boardPaint.setStyle(Paint.Style.STROKE);
@@ -109,6 +119,10 @@ public class CheckMaterial extends View implements Checkable {
         LeftLine = (float) (LeftLine * Math.sqrt(2) / 2);
     }
 
+    @Override
+    public void setVisibility(int visibility) {
+        super.setVisibility(visibility);
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -139,7 +153,11 @@ public class CheckMaterial extends View implements Checkable {
 
     }
 
-
+    /**
+     * 动画
+     *
+     * @param isChecked
+     */
     private void animateProgress(boolean isChecked) {
         progressAnimate = ObjectAnimator.ofFloat(this, "progress", isChecked ? 1.0f : 0.0f);
         progressAnimate.setDuration(200);
@@ -156,21 +174,6 @@ public class CheckMaterial extends View implements Checkable {
     }
 
 
-    private int dp(float value) {
-        if (value == 0) {
-            return 0;
-        }
-        float density = getContext().getResources().getDisplayMetrics().density;
-        return (int) Math.ceil(density * value);
-    }
-
-
-    
-   /* private void setChecked(boolean checked){
-        
-    }*/
-
-
     @Override
     public void setChecked(boolean checked) {
         Log.e("checked", checked + "");
@@ -183,12 +186,26 @@ public class CheckMaterial extends View implements Checkable {
 
     @Override
     public boolean isChecked() {
-        return false;
+        return isChecked;
     }
 
     @Override
     public void toggle() {
         setChecked(!isChecked);
-        Log.e(">>>>", "<<<<<<<<");
     }
+
+    /**
+     * 转DP
+     *
+     * @param value
+     * @return
+     */
+    private int dp(float value) {
+        if (value == 0) {
+            return 0;
+        }
+        float density = getContext().getResources().getDisplayMetrics().density;
+        return (int) Math.ceil(density * value);
+    }
+
 }
